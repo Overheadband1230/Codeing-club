@@ -18,7 +18,7 @@ def addItems():
             userinput = input("Normal or Weighted: ").lower()
     item = Input1
     
-    with open("C:\\Users\\adamm\\Downloads\\test\\cashmachine\\food.csv", "a", newline='') as file:
+    with open("food.csv", "a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow(item)
 
