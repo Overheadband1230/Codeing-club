@@ -1,28 +1,31 @@
 import csv
 import subprocess
 
+
 def option():
-    choice = input("Enter C or type 'checkout' to make purchases. If you would like to reset your password press R or type 'reset' to reset your password: ")
-    
+    choice = input("Enter C or type 'checkout' to make purchases. If you would like to reset your password press R or "
+                   "type 'reset' to reset your password: ")
+
     if choice.lower() == "c" or choice.lower() == "checkout":
-        subprocess.run(["python", "cashmachine\\checkout.py"])
+        subprocess.run(["python", "checkout.py"])
         pass
-    
+
     elif choice.lower() == "reset" or choice.lower() == "r":
         resetPassword()
-        
+
     elif choice.lower() == "add" or choice.lower() == "add item" or choice.lower() == "a":
-        subprocess.run(["python", "cashmachine\\foodbank.py"])
-        
+        subprocess.run(["python", "foodbank.py"])
+
     else:
         print("Not a valid option")
         option()
-        
+
+
 print("Login?")
 
 
 def resetPassword():
-    with open("cashmachine\\password.csv", "r") as file:
+    with open("password.csv", "r") as file:
         reader = csv.reader(file)
         for row in reader:
             oldPass = row[0]
@@ -37,14 +40,13 @@ def resetPassword():
         elif strengthChecker(newPass) == "Invalid":
             continue
         else:
-            isValid = True  
+            isValid = True
             password = newPass
-            with open("cashmachine\\password.csv", "w", newline='') as file:
+            with open("password.csv", "w", newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([password])
         print("Password has been successfully changed!")
     passwordCheck()
-    
 
 
 def strengthChecker(password):
@@ -82,5 +84,6 @@ def passwordCheck():
             option()
     if guess != password:
         print("Login failed after 3 attempts.")
+
 
 passwordCheck()

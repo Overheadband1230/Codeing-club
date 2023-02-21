@@ -40,7 +40,7 @@ while R >= t:
 
     def read_csv():
         items = []
-        with open("C:\\Users\\adamm\\Downloads\\test\\cashmachine\\food.csv", "r") as file:
+        with open("food.csv", "r") as file:
             reader = csv.reader(file)
             for row in reader:
                 items.append(row)
@@ -60,11 +60,11 @@ while R >= t:
         restart = input("Would you like to start a new transaction? (yes/no): ")
         if restart.lower() == "no" or restart.lower() == "n":
             print("Goodbye.")
-            subprocess.run(["python","cashmachine\\login.py"],bufsize=0)
+            subprocess.run(["python", "login.py"],bufsize=0)
         elif restart.lower() == "yes" or restart.lower() == "y":
             print("new transaction:")
         elif restart.lower() == "main" or restart.lower() == "exit":
-            subprocess.run(["python", "cashmachine\\main.py"], bufsize=0)
+            subprocess.run(["python", "main.py"], bufsize=0)
             pass
            
  
